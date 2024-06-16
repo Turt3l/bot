@@ -1,14 +1,26 @@
-import { Composer } from "micro-bot";
+import { Telegraf } from "telegraf";
 import { Markup } from "telegraf";
 import DDPClient from "ddp";
 import axios from "axios";
 import cheerio from "cheerio";
+import express from "express";
 
-const bot = new Composer("6968501326:AAEfZf3aZxUNFV3quVC7qTLVtOcejgwcurM");
+const bot = new Telegraf("6968501326:AAEfZf3aZxUNFV3quVC7qTLVtOcejgwcurM");
 
 const web_link = "https://snazzy-sfogliatella-b19ff2.netlify.app/";
 
 const paid = true;
+
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("Hello world");
+});
+
+const port = 3000;
+app.listen(port, () => {
+  console.log("real");
+});
 
 var connection = new DDPClient({
   host: "localhost",
@@ -113,7 +125,7 @@ bot.on("successful_payment", async (ctx, next) => {
   paid = true;
 });
 
-module.exports = bot;
+bot.launch();
 
 // Enable graceful stop
 process.once("SIGINT", () => bot.stop("SIGINT"));

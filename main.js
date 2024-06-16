@@ -98,7 +98,7 @@ bot.command("start", async (ctx) => {
     ])
   );
 
-  // Do not put anything that listens for messages here
+  // Do not put anything that listens for messages herea
 });
 bot.action("car_button", async (ctx) => {
   return await ctx.reply(

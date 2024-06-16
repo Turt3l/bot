@@ -1,10 +1,10 @@
-import { Telegraf } from "telegraf";
+import { Composer } from "micro-bot";
 import { Markup } from "telegraf";
 import DDPClient from "ddp";
 import axios from "axios";
 import cheerio from "cheerio";
 
-const bot = new Telegraf("6968501326:AAEfZf3aZxUNFV3quVC7qTLVtOcejgwcurM");
+const bot = new Composer("6968501326:AAEfZf3aZxUNFV3quVC7qTLVtOcejgwcurM");
 
 const web_link = "https://snazzy-sfogliatella-b19ff2.netlify.app/";
 
@@ -113,7 +113,7 @@ bot.on("successful_payment", async (ctx, next) => {
   paid = true;
 });
 
-bot.launch();
+module.exports = bot;
 
 // Enable graceful stop
 process.once("SIGINT", () => bot.stop("SIGINT"));
